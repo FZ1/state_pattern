@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "state_pattern.h"
 
-// イベント発生時に呼び出す関数のプロトタイプ
+// 状態オブジェクトの定義
 typedef struct State {
 	const struct State* (* const stop)(const struct State* pThis);
 	const struct State* (* const playOrPause)(const struct State* pThis);
@@ -11,6 +11,7 @@ typedef struct State {
 // 現在の状態オブジェクトを保持する
 static const State* pCurrentState;
 
+// イベント発生時に呼び出す関数のプロトタイプ
 static const State* ignore(const State* pThis);
 static const State* startPlay(const State* pThis);
 static const State* stopPlay(const State* pThis);
