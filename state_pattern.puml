@@ -1,0 +1,21 @@
+@startuml
+' 状態遷移図
+
+IDLE : onPlayOrPause()
+IDLE : onStop()
+PLAY : onPlayOrPause()
+PLAY : onStop()
+PAUSE : onPlayOrPause()
+PAUSE : onStop()
+
+[*] --> IDLE
+IDLE --> PLAY : onPlayOrPause
+IDLE --> IDLE : onStop
+
+PLAY --> PAUSE : onPlayOrPause
+PLAY --> IDLE : onStop
+
+PAUSE --> PLAY : onPlayOrPause
+PAUSE --> IDLE : onStop
+
+@enduml
